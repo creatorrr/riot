@@ -4,6 +4,7 @@ ISTANBUL = ./node_modules/istanbul/lib/cli.js
 ESLINT = ./node_modules/eslint/bin/eslint.js
 MOCHA = ./node_modules/mocha/bin/_mocha
 SMASH = ./node_modules/.bin/smash
+ROLLUP = ./node_modules/.bin/rollup
 UGLIFY = ./node_modules/uglify-js/bin/uglifyjs
 COVERALLS = ./node_modules/coveralls/bin/coveralls.js
 
@@ -51,10 +52,7 @@ compare:
 raw:
 	# build riot
 	@ mkdir -p $(DIST)
-	@ $(SMASH) lib/riot.js > $(DIST)riot.js
-	@ $(SMASH) lib/riot+compiler.js > $(DIST)riot+compiler.js
-	@ $(SMASH) lib/riot.csp.js > $(DIST)riot.csp.js
-	@ $(SMASH) lib/riot+compiler.csp.js > $(DIST)riot+compiler.csp.js
+	@ $(ROLLUP) lib/riot.js --config rollup.config.js > $(DIST)riot.rollup.js
 
 clean:
 	# clean $(DIST)
